@@ -1,5 +1,8 @@
 from django.db import models
 
+class Default(models.Model):
+    did_default = models.BooleanField()
+
 class Features(models.Model):
     amount = models.IntegerField()
     gender = models.IntegerField()
@@ -24,4 +27,4 @@ class Features(models.Model):
     previous_payment_3 = models.IntegerField()
     previous_payment_2 = models.IntegerField()
     previous_payment_1 = models.IntegerField()
-
+    prediction = models.OneToOneField(Default, on_delete=models.CASCADE)
