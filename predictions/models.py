@@ -1,0 +1,27 @@
+from django.db import models
+
+class Features(models.Model):
+    amount = models.IntegerField()
+    gender = models.IntegerField()
+    education = models.IntegerField()
+    marital_status = models.IntegerField()
+    age = models.IntegerField()
+    payment_status_6 = models.IntegerField()
+    payment_status_5 = models.IntegerField()
+    payment_status_4 = models.IntegerField()
+    payment_status_3 = models.IntegerField()
+    payment_status_2 = models.IntegerField()
+    payment_status_1 = models.IntegerField()
+    bill_statement_6 = models.IntegerField()
+    bill_statement_5 = models.IntegerField()
+    bill_statement_4 = models.IntegerField()
+    bill_statement_3 = models.IntegerField()
+    bill_statement_2 = models.IntegerField()
+    bill_statement_1 = models.IntegerField()
+    previous_payment_6 = models.IntegerField()
+    previous_payment_5 = models.IntegerField()
+    previous_payment_4 = models.IntegerField()
+    previous_payment_3 = models.IntegerField()
+    previous_payment_2 = models.IntegerField()
+    previous_payment_1 = models.IntegerField()
+
