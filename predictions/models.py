@@ -4,7 +4,7 @@ class Default(models.Model):
     did_default = models.BooleanField()
 
 class Features(models.Model):
-    amount = models.IntegerField()
+    amount_of_given_credit = models.IntegerField()
     gender = models.IntegerField()
     education = models.IntegerField()
     marital_status = models.IntegerField()

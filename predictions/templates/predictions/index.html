@@ -1,10 +1,50 @@
 <!DOCTYPE html>
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'predictions/index.css' %}" />
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Credit Default Prediction</title>
 </head>
-<body>
+<input type="text" placeholder="Current amount of given credit" name="amount_of_given_credit"><br>
+<select class="gender">
+  <option value="male">male</option>
+  <option value="female">female</option>
+</select>
+<select class="education">
+    <option value ="graduate">Graduate School</option>
+    <option value ="university">University</option>
+    <option value ="high school">High School</option>
+    <option value ="other">Other</option>
+</select>
+<select class="marital_status">
+    <option value ="married">Married</option>
+    <option value ="single">Single</option>
+    <option value ="Other">Other</option>
+</select>
+<input type="text" placeholder="Current age" name="age"><br>
 
+<input type="text" placeholder="Repayment status 6 months ago" name="payment_status_6"><br>
+<input type="text" placeholder="Repayment status 5 months ago" name="payment_status_5"><br>
+<input type="text" placeholder="Repayment status 4 months ago" name="payment_status_4"><br>
+<input type="text" placeholder="Repayment status 3 months ago" name="payment_status_3"><br>
+<input type="text" placeholder="Repayment status 2 months ago" name="payment_status_2"><br>
+<input type="text" placeholder="Repayment status 1 month ago" name="payment_status_1"><br>
+
+<input type="text" placeholder="Amount of bill statement 6 months ago" name="bill_statement_6"><br>
+<input type="text" placeholder="Amount of bill statement 5 months ago" name="bill_statement_5"><br>
+<input type="text" placeholder="Amount of bill statement 4 months ago" name="bill_statement_4"><br>
+<input type="text" placeholder="Amount of bill statement 3 months ago" name="bill_statement_3"><br>
+<input type="text" placeholder="Amount of bill statement 2 months ago" name="bill_statement_2"><br>
+<input type="text" placeholder="Amount of bill statement 1 month ago" name="bill_statement_1"><br>
+
+<input type="text" placeholder="Amount paid 6 months ago" name="previous_payment_6"><br>
+<input type="text" placeholder="Amount paid 5 months ago" name="previous_payment_5"><br>
+<input type="text" placeholder="Amount paid 4 months ago" name="previous_payment_4"><br>
+<input type="text" placeholder="Amount paid 3 months ago" name="previous_payment_3"><br>
+<input type="text" placeholder="Amount paid 2 months ago" name="previous_payment_2"><br>
+<input type="text" placeholder="Amount paid 1 month ago" name="previous_payment_1"><br>
 </body>
+<input type="submit" value="Predict" />
 </html>
