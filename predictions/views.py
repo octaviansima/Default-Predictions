@@ -1,11 +1,8 @@
-from django.contrib.messages import error
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from predictions.forms import FeaturesForm
 from predictions.engine import *
 from predictions.helpers import *
-
-from sklearn.externals import joblib
 
 engine = Engine()
 
@@ -20,7 +17,7 @@ def index(request):
         request.session["form_instantiated"] = False
         if not request.session["form_instantiated"]:
             print("first time")
-            engine.loadPickle()
+            engine.load_pickle()
             request.session["form_instantiated"] = True
         else:
             print("afterwards")

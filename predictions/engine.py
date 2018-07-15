@@ -8,7 +8,7 @@ class Engine:
         self.num_pipeline = None
         self.pca = None
 
-    def loadPickle(self):
+    def load_pickle(self):
         self.cat_pipeline = joblib.load("predictions/saves/cat_pipeline.pkl")
         self.model = joblib.load("predictions/saves/model.pkl")
         self.num_pipeline = joblib.load("predictions/saves/num_pipeline.pkl")
