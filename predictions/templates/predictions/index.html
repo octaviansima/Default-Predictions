@@ -8,47 +8,11 @@
     <title>Credit Default Prediction</title>
 </head>
 <body>
-<form action="submit/" method="post">
+<form action="/" method="post">
     {% csrf_token %}
-    <input type="text" placeholder="Current amount of given credit" name="amount_of_given_credit"><br>
-    <select name="gender">
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-    </select>
-    <select name="education">
-        <option value="graduate">Graduate School</option>
-        <option value="university">University</option>
-        <option value="high school">High School</option>
-        <option value="other">Other</option>
-    </select>
-    <select name="marital_status">
-        <option value="married">Married</option>
-        <option value="single">Single</option>
-        <option value="Other">Other</option>
-    </select>
-    <input type="text" placeholder="Current age" name="age"><br>
-
-    <input type="text" placeholder="How many months payment delinquent 6 months ago (-1 if duly)" name="payment_status_6"><br>
-    <input type="text" placeholder="How many months payment delinquent 5 months ago (-1 if duly)" name="payment_status_5"><br>
-    <input type="text" placeholder="How many months payment delinquent 4 months ago (-1 if duly)" name="payment_status_4"><br>
-    <input type="text" placeholder="How many months payment delinquent 3 months ago (-1 if duly)" name="payment_status_3"><br>
-    <input type="text" placeholder="How many months payment delinquent 2 months ago (-1 if duly)" name="payment_status_2"><br>
-    <input type="text" placeholder="How many months payment delinquent 1 months ago (-1 if duly)" name="payment_status_1"><br>
-
-
-    <input type="text" placeholder="Amount of bill statement 6 months ago" name="bill_statement_6"><br>
-    <input type="text" placeholder="Amount of bill statement 5 months ago" name="bill_statement_5"><br>
-    <input type="text" placeholder="Amount of bill statement 4 months ago" name="bill_statement_4"><br>
-    <input type="text" placeholder="Amount of bill statement 3 months ago" name="bill_statement_3"><br>
-    <input type="text" placeholder="Amount of bill statement 2 months ago" name="bill_statement_2"><br>
-    <input type="text" placeholder="Amount of bill statement 1 month ago" name="bill_statement_1"><br>
-
-    <input type="text" placeholder="Amount paid 6 months ago" name="previous_payment_6"><br>
-    <input type="text" placeholder="Amount paid 5 months ago" name="previous_payment_5"><br>
-    <input type="text" placeholder="Amount paid 4 months ago" name="previous_payment_4"><br>
-    <input type="text" placeholder="Amount paid 3 months ago" name="previous_payment_3"><br>
-    <input type="text" placeholder="Amount paid 2 months ago" name="previous_payment_2"><br>
-    <input type="text" placeholder="Amount paid 1 month ago" name="previous_payment_1"><br>
+    <table border="0">
+    {{ form }}
+    </table>
     <input type="submit" value="Predict"/>
 </form>
 {% for message in messages %}
