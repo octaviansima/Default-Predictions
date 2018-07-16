@@ -1,4 +1,5 @@
 from sklearn.externals import joblib
+import numpy as np
 
 class Engine:
 
@@ -13,3 +14,9 @@ class Engine:
         self.model = joblib.load("predictions/saves/model.pkl")
         self.num_pipeline = joblib.load("predictions/saves/num_pipeline.pkl")
         self.pca = joblib.load("predictions/saves/pca.pkl")
+
+    def pd_to_vector(self, numerical, categorical):
+        num_prepared = self.num_pipeline.fit_transform(numerical)
+        cat_prepared = self.cat_pipeline.fit_transform(categorical)
+        x = np.concatenate((num_prepared, cat_prepared.toarray()), axis=1)
+        return x

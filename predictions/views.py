@@ -3,6 +3,7 @@ from django.shortcuts import render
 from predictions.forms import FeaturesForm
 from predictions.engine import *
 from predictions.helpers import *
+from predictions.models import *
 
 engine = Engine()
 
@@ -11,7 +12,11 @@ def index(request):
         form = FeaturesForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            model = CleanedDatatoModel(cd)
+            df = cleaned_data_to_pandas(cd)
+
+            numerical, categorical = split_data(df)
+            print(df)
+            x = engine.pd_to_vector(numerical, categorical)
             return HttpResponseRedirect("/result")
     else:
         request.session["form_instantiated"] = False
