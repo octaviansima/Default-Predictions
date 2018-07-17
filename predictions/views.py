@@ -2,8 +2,6 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from predictions.forms import FeaturesForm
 from predictions.engine import *
-from predictions.helpers import *
-from predictions.models import *
 
 engine = Engine()
 
@@ -12,11 +10,14 @@ def index(request):
         form = FeaturesForm(request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            df = cleaned_data_to_pandas(cd)
+            df = engine.cleaned_data_to_pandas(cd)
+            numerical, categorical = engine.split_data(df)
 
-            numerical, categorical = split_data(df)
-            print(df)
             x = engine.pd_to_vector(numerical, categorical)
+            y = engine.predict(x)
+
+            features, default = engine.pandas_to_model(df, y)
+            request.session["prediction_result"] = "Did default" if y else "Did Not Default"
             return HttpResponseRedirect("/result")
     else:
         request.session["form_instantiated"] = False
@@ -24,8 +25,6 @@ def index(request):
             print("first time")
             engine.load_pickle()
             request.session["form_instantiated"] = True
-        else:
-            print("afterwards")
         form = FeaturesForm()
         return render(request, 'predictions/index.html', {"form": form})
 
