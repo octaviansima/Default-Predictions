@@ -44,7 +44,7 @@ class Engine:
         return pd.DataFrame(cd, index=[0], dtype="float64")
 
     def pandas_to_model(self, df, y):
-        default = Default(did_default=True)
+        default = Default(did_default=True if y else False)
         features = Features(amount_of_given_credit=df["amount_of_given_credit"][0], gender=df["gender"][0], education=df["education"][0],
                              marital_status=df["marital_status"], age=df["age"][0], payment_status_6=df["payment_status_6_months_ago"][0],
                              payment_status_5=df["payment_status_5_months_ago"][0], payment_status_4=df["payment_status_4_months_ago"][0], payment_status_3=df["payment_status_3_months_ago"][0],

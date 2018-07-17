@@ -82,6 +82,9 @@ DATABASES = {
         'PASSWORD': 'defaultcredit',
         'HOST': 'localhost',
         'PORT': '',
+        'TEST': {
+            'NAME': 'test_defaultdatabase',
+        },
     }
 }
 

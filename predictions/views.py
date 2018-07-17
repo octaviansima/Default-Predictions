@@ -17,7 +17,7 @@ def index(request):
             y = engine.predict(x)
 
             features, default = engine.pandas_to_model(df, y)
-            request.session["prediction_result"] = "Did default" if y else "Did Not Default"
+            request.session["prediction_result"] = "Will Default" if y else "Will Not Default"
             return HttpResponseRedirect("/result")
     else:
         request.session["form_instantiated"] = False
