@@ -2,6 +2,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from predictions.forms import FeaturesForm
 from predictions.engine import *
+from django.template.context import RequestContext
 
 engine = Engine()
 

@@ -1,20 +1,69 @@
 <!DOCTYPE html>
 
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'predictions/style.css' %}" />
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Credit Default Prediction</title>
+    <style type="text/css">
+        * {
+            font-family: Arial, Verdana, sans-serif;
+        }
+        label {
+            color: #4a4a4a;
+        }
+        table {
+            margin: auto;
+            border-width: 0;
+            background-color: #ffffff;
+            -moz-box-shadow: -5px -5px #425484;
+            -webkit-box-shadow: -5px -5px #425484;
+            box-shadow: -5px -5px #425484;
+        }
+        th {
+            border: 0;
+            padding: 4px;
+        }
+        td {
+            border-color: #425484;
+        }
+        select, input {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            border: 0;
+            background-color: #f8f8f8;
+            padding-left: 10px;
+            padding-right: 10px;
+            alignment: left;
+            font-size: 1em;
+            color: #425484;
+        }
+        select:hover, input:hover {
+            background-color: #ffffff;
+        }
+        .user-form {
+            margin: auto;
+        }
+        #submit {
+            padding-top: 10px;
+            color: #ffffff;
+            text-decoration: #4a4a4a;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<form action="/" method="post">
-    {% csrf_token %}
-    <table border="0">
-    {{ form }}
-    </table>
-    <input type="submit" value="Predict"/>
+<div class="user-form">
+    <form action="/" method="post">
+        {% csrf_token %}
+        <table border="1">
+        {{ form }}
+        </table>
+        <div id="submit">
+        <input type="submit" value="Predict"/>
+        </div>
 </form>
+</div>
 {% for message in messages %}
     <p>{{ message }}</p>
 {% endfor %}

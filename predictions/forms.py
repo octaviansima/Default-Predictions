@@ -25,3 +25,7 @@ class FeaturesForm(forms.Form):
     previous_payment_3_months_ago = forms.IntegerField()
     previous_payment_2_months_ago = forms.IntegerField()
     previous_payment_1_month_ago = forms.IntegerField()
+
+    def __init__(self, *args, **kwargs):
+        super(FeaturesForm, self).__init__(*args, **kwargs)
+        self.fields['amount_of_given_credit'].widget.attrs.update({'class': 'amount'})
