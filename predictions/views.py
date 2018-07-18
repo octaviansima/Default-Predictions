@@ -16,7 +16,7 @@ def index(request):
             x = engine.pd_to_vector(numerical, categorical)
             y = engine.predict(x)
 
-            features, default = engine.pandas_to_model(df, y)
+            features, default = engine.pd_to_model_and_save(df, y)
             request.session["prediction_result"] = "Will Default" if y else "Will Not Default"
             return HttpResponseRedirect("/result")
     else:

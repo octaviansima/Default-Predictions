@@ -27,4 +27,4 @@ class Features(models.Model):
     previous_payment_3 = models.IntegerField()
     previous_payment_2 = models.IntegerField()
     previous_payment_1 = models.IntegerField()
-    prediction = models.OneToOneField(Default, on_delete=models.CASCADE)
+    prediction = models.OneToOneField(Default, on_delete=models.CASCADE, primary_key=True)

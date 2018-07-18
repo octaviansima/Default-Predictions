@@ -1,9 +1,11 @@
 from django.test import TestCase
 from predictions.engine import Engine
 import numpy as np
+import pandas as pd
+from predictions.choices import forms_cat_cols, forms_num_cols
+from predictions.models import *
 
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import roc_curve
 from sklearn.metrics import roc_auc_score
 from sklearn.metrics import accuracy_score
 
@@ -39,3 +41,20 @@ class EngineTestCase(TestCase):
 
         self.assertAlmostEqual(accuracy, 0.8156666666666667)
         self.assertAlmostEqual(auc, 0.7720735011050118)
+
+class ModelTestCase(TestCase):
+
+    def test_model_saves(self):
+        engine = Engine()
+
+        forms_cols = forms_num_cols + forms_cat_cols
+        test_data = [1000, 1, 1, 1, 25, -1, -1, -1, -1, -1, -1,
+                     10, 10 ,10 ,10 ,10, 10, 10, 10, 10, 10, 10, 10]
+        mapper = {}
+        for i in range(len(forms_cols)):
+            mapper[forms_cols[i]] = test_data[i]
+        df = pd.DataFrame(data=mapper, index=[0], dtype="float64")
+        features, default = engine.pd_to_model_and_save(df, True)
+        features.prediction_id = default.id
+        self.assertEquals(Default.objects.get(pk=1), default)
+        self.assertEquals(Features.objects.get(pk=1), features)

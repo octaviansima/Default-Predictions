@@ -43,8 +43,9 @@ class Engine:
     def cleaned_data_to_pandas(self, cd):
         return pd.DataFrame(cd, index=[0], dtype="float64")
 
-    def pandas_to_model(self, df, y):
+    def pd_to_model_and_save(self, df, y):
         default = Default(did_default=True if y else False)
+        default.save()
         features = Features(amount_of_given_credit=df["amount_of_given_credit"][0], gender=df["gender"][0], education=df["education"][0],
                              marital_status=df["marital_status"], age=df["age"][0], payment_status_6=df["payment_status_6_months_ago"][0],
                              payment_status_5=df["payment_status_5_months_ago"][0], payment_status_4=df["payment_status_4_months_ago"][0], payment_status_3=df["payment_status_3_months_ago"][0],
@@ -53,6 +54,7 @@ class Engine:
                              bill_statement_2=df["amount_on_bill_statement_2_months_ago"][0], bill_statement_1=df["amount_on_bill_statement_1_month_ago"][0], previous_payment_6=df["previous_payment_6_months_ago"][0],
                              previous_payment_5=df["previous_payment_5_months_ago"][0], previous_payment_4=df["previous_payment_4_months_ago"][0], previous_payment_3=df["previous_payment_3_months_ago"][0],
                              previous_payment_2=df["previous_payment_2_months_ago"][0], previous_payment_1=df["previous_payment_1_month_ago"][0], prediction=default)
+        features.save()
         return features, default
 
     def split_data(self, df):
